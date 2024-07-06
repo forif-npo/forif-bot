@@ -12,7 +12,7 @@ connection = pymysql.connect(
 
 def get_study_list():
     with connection.cursor(pymysql.cursors.DictCursor) as cursor:
-        sql = "SELECT study_name, study_goal FROM tb_study WHERE act_year = 2024 AND act_semester = 2"
+        sql = "SELECT study_name, study_goal, study_web_url FROM tb_study WHERE act_year = 2024 AND act_semester = 2"
         cursor.execute(sql)
         result = cursor.fetchall()
 
@@ -21,7 +21,7 @@ def get_study_list():
 
 def get_recent_notice():
     with connection.cursor(pymysql.cursors.DictCursor) as cursor:
-        sql = "SELECT ? FROM tb_notice LIMIT 5"
+        sql = "SELECT notice_title, notice_date FROM tb_notice LIMIT 5"
         cursor.execute(sql)
         result = cursor.fetchall()
 
