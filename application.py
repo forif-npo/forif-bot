@@ -28,6 +28,8 @@ def server_error(error):
         }
     }
 
+    return response
+
 
 
 if __name__ == "__main__":
