@@ -31,7 +31,8 @@ def get_study_list():
         return result
 
     finally:
-        connection.close()
+        if connection.open:
+            connection.close()
 
 
 def get_recent_notice():
@@ -51,4 +52,5 @@ def get_recent_notice():
         return result
 
     finally:
-        connection.close()
+        if connection.open:
+            connection.close()
