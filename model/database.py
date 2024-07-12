@@ -1,7 +1,8 @@
 import pymysql
 
+def db_connect():
+    global connection
 
-def get_study_list():
     connection = pymysql.connect(
         host='forifdb.c1800c86ily5.ap-northeast-2.rds.amazonaws.com',
         port=3306,
@@ -11,9 +12,12 @@ def get_study_list():
         charset='utf8'
     )
 
-    try:
-        cursor = connection.cursor(pymysql.cursors.DictCursor)
 
+def get_study_list():
+    if not connection.open:
+        db_connect()
+
+    with connection.cursor(pymysql.cursors.DictCursor) as cursor:
         sql = '''
         SELECT study_name, study_goal, study_web_url
         FROM tb_study
@@ -23,36 +27,26 @@ def get_study_list():
 
         cursor.execute(sql)
         result = cursor.fetchall()
+        connection.close()
 
         return result
 
-    finally:
-        connection.close()
+
 
 
 def get_recent_notice():
-    connection = pymysql.connect(
-        host='forifdb.c1800c86ily5.ap-northeast-2.rds.amazonaws.com',
-        port=3306,
-        user='root',
-        passwd='Kangbh98!',
-        db='test',
-        charset='utf8'
-    )
+    if not connection.open:
+        db_connect()
 
-    try:
-        cursor = connection.cursor(pymysql.cursors.DictCursor)
-
+    with connection.cursor(pymysql.cursors.DictCursor) as cursor:
         sql = '''
-            SELECT notice_title, notice_date
-            FROM tb_notice
-            LIMIT 5;
-            '''
+        SELECT notice_title, notice_date
+        FROM tb_notice
+        LIMIT 5;
+        '''
 
         cursor.execute(sql)
         result = cursor.fetchall()
+        connection.close()
 
         return result
-
-    finally:
-        connection.close()
