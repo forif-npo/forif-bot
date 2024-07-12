@@ -1,6 +1,5 @@
 import pymysql
 
-
 connection = pymysql.connect(
     host='forifdb.c1800c86ily5.ap-northeast-2.rds.amazonaws.com',
     port=3306,
@@ -12,7 +11,7 @@ connection = pymysql.connect(
 
 
 def get_study_list():
-    cursor = connection.cursor()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     sql = '''
     SELECT study_name, study_goal, study_web_url
@@ -29,7 +28,7 @@ def get_study_list():
 
 
 def get_recent_notice():
-    cursor = connection.cursor()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     sql = '''
         SELECT notice_title, notice_date
