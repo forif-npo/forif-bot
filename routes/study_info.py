@@ -13,8 +13,8 @@ def study_list():
     for study in studies:
         item = {
             "title": study['study_name'],
-            "description": study['study_goal'],
-            "link": {"web": study['study_web_url']}
+            "description": study['explanation'],
+            "link": {"web": study['web_url']}
         }
 
         items.append(item)

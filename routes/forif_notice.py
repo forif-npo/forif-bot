@@ -12,8 +12,8 @@ def study_list():
     items = list()
     for notice in notices:
         item = {
-            "title": notice['notice_title'],
-            "description": "게시 날짜 : " + notice['notice_date'],
+            "title": notice['title'],
+            "description": "게시 날짜 : " + notice['created_at'],
             "link": {"web": "https://www.forif.org/"}
         }
         items.append(item)

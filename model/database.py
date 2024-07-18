@@ -14,7 +14,7 @@ def get_study_list():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     sql = '''
-    SELECT study_name, study_goal, study_web_url
+    SELECT study_name, explanation, web_url
     FROM tb_study
     WHERE act_year = 2024
     AND act_semester = 2;
@@ -31,8 +31,9 @@ def get_recent_notice():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     sql = '''
-        SELECT notice_title, notice_date
-        FROM tb_notice
+        SELECT title, created_at
+        FROM tb_post
+        WHERE post_type = '공지사항'
         LIMIT 5;
         '''
 
