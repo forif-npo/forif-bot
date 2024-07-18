@@ -5,7 +5,7 @@ connection = pymysql.connect(
     port=3306,
     user='root',
     passwd='Kangbh98!',
-    db='test',
+    db='dev',
     charset='utf8'
 )
 
