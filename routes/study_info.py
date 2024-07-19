@@ -14,6 +14,7 @@ def study_list():
         item = {
             "title": study['study_name'],
             "description": study['explanation'],
+            "imageUrl": study['img_url'],
             "link": {"web": study['web_url']}
         }
 
