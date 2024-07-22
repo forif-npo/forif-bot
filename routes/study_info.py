@@ -39,7 +39,17 @@ def study_list():
                 {
                     "carousel": {
                         "type": "listCard",
-                        "items": result
+                        "items": [
+                            {
+                                "items": items[0:5]
+                            },
+                            {
+                                "items": items[5:10]
+                            },
+                            {
+                                "items": items[10:15]
+                            }
+                        ]
                     }
                 }
             ]
