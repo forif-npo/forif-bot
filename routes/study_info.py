@@ -14,7 +14,6 @@ def study_list():
         item = {
             "title": study['study_name'],
             "description": study['explanation'],
-            "imageUrl": study['img_url'],
             "link": {"web": study['web_url']}
         }
 
@@ -27,7 +26,10 @@ def study_list():
     result = list()
     for i in range(carousel_count):
         temp = {
-            "items": items[i*5 : (i+1) * 5]
+            "header": {
+                "title": "현재 운영 중인 정규 스터디 🦊"
+            },
+            "items": items[i*5 : (i+1)*5]
         }
 
         result.append(temp)
@@ -39,17 +41,7 @@ def study_list():
                 {
                     "carousel": {
                         "type": "listCard",
-                        "items": [
-                            {
-                                "items": items[0:5]
-                            },
-                            {
-                                "items": items[5:10]
-                            },
-                            {
-                                "items": items[10:15]
-                            }
-                        ]
+                        "items": result
                     }
                 }
             ]
