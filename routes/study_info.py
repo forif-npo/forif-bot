@@ -9,7 +9,8 @@ study = Blueprint('study', __name__)
 def study_list():
     studies = database.get_study_list()
 
-    items = list()
+    items_1 = list()
+
     for study in studies:
         item = {
             "title": study['study_name'],
@@ -29,7 +30,15 @@ def study_list():
                         "header": {
                             "title": "🦊 현재 운영 중인 정규 스터디"
                         },
-                        "items": items
+                        "items": items[0:5]
+                    }
+                },
+                {
+                    "listCard": {
+                        "header": {
+                            "title": "🦊 현재 운영 중인 정규 스터디"
+                        },
+                        "items": items[5:10]
                     }
                 }
             ]

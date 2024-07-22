@@ -29,7 +29,8 @@ def get_study_list():
     SELECT study_name, explanation, img_url, web_url
     FROM tb_study
     WHERE act_year = 2024
-    AND act_semester = 2;
+    AND act_semester = 2
+    ORDER BY difficulty;
     '''
 
     return run_query(sql)
