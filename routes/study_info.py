@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 
 from model import database
 
@@ -9,6 +9,7 @@ study = Blueprint('study', __name__)
 def study_list():
     studies = database.get_study_list()
 
+    items = list()
     for study in studies:
         item = {
             "title": study['study_name'],
@@ -20,17 +21,31 @@ def study_list():
         items.append(item)
 
     output = list()
-    carosel = len(items) // 5
+    carousel_cnt = len(items) // 5
     if len(items) % 5:
-        carosel += 1
+        carousel_cnt += 1
 
-    for i in range(carosel):
-        output.append(items[i*5 : (i+1)]*5)
+    for i in range(carousel_cnt):
+        output.append(items[i*5: (i+1)*5])
+
+    carousels = [
+        {
+            "type": "listCard",
+            "items": carousel
+        } for carousel in output
+    ]
 
     response = {
         "version": "2.0",
         "template": {
-            "outputs": output
+            "outputs": [
+                {
+                    "carousel": {
+                        "type": "listCard",
+                        "items": carousels
+                    }
+                }
+            ]
         }
     }
 
