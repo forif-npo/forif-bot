@@ -39,6 +39,11 @@ def study_list():
         "template": {
             "outputs": [
                 {
+                    "simpleText": {
+                        "text": "터치 혹은 클릭시 어쩌구"
+                    }
+                },
+                {
                     "carousel": {
                         "type": "listCard",
                         "items": result
