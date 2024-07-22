@@ -9,8 +9,6 @@ study = Blueprint('study', __name__)
 def study_list():
     studies = database.get_study_list()
 
-    items_1 = list()
-
     for study in studies:
         item = {
             "title": study['study_name'],
@@ -21,27 +19,18 @@ def study_list():
 
         items.append(item)
 
+    output = list()
+    carosel = len(items) // 5
+    if len(items) % 5:
+        carosel += 1
+
+    for i in range(carosel):
+        output.append(items[i*5 : (i+1)]*5)
+
     response = {
         "version": "2.0",
         "template": {
-            "outputs": [
-                {
-                    "listCard": {
-                        "header": {
-                            "title": "🦊 현재 운영 중인 정규 스터디"
-                        },
-                        "items": items[0:5]
-                    }
-                },
-                {
-                    "listCard": {
-                        "header": {
-                            "title": "🦊 현재 운영 중인 정규 스터디"
-                        },
-                        "items": items[5:10]
-                    }
-                }
-            ]
+            "outputs": output
         }
     }
 
