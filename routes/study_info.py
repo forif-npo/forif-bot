@@ -20,21 +20,6 @@ def study_list():
 
         items.append(item)
 
-    output = list()
-    carousel_cnt = len(items) // 5
-    if len(items) % 5:
-        carousel_cnt += 1
-
-    for i in range(carousel_cnt):
-        output.append(items[i*5: (i+1)*5])
-
-    carousels = [
-        {
-            "type": "listCard",
-            "items": carousel
-        } for carousel in output
-    ]
-
     response = {
         "version": "2.0",
         "template": {
@@ -42,7 +27,9 @@ def study_list():
                 {
                     "carousel": {
                         "type": "listCard",
-                        "items": carousels
+                        "items": items[0:5],
+                        "items": items[5:10],
+                        "items": items[10:15]
                     }
                 }
             ]
