@@ -26,7 +26,11 @@ def study_list():
 
     result = list()
     for i in range(carousel_count):
-        result.append(items[i*5 + (i+1)*5])
+        temp = {
+            "items": items[i*5 : (i+1) * 5]
+        }
+
+        result.append(temp)
 
     response = {
         "version": "2.0",
