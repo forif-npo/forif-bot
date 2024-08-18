@@ -7,7 +7,7 @@ def run_query(sql):
         port=3306,
         user='root',
         passwd='Kangbh98!',
-        db='dev',
+        db='forif',
         charset='utf8'
     )
 
@@ -26,10 +26,10 @@ def run_query(sql):
 
 def get_study_list():
     sql = '''
-    SELECT study_name, explanation, img_url, web_url
+    SELECT study_name, one_liner, img_url, web_url
     FROM tb_study
     WHERE act_year = 2024
-    AND act_semester = 1
+    AND act_semester = 2
     ORDER BY difficulty;
     '''
 

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 
 from model import database
 
@@ -13,8 +13,8 @@ def study_list():
     for notice in notices:
         item = {
             "title": notice['title'],
-            "description": "게시 날짜 : " + notice['created_at'],
-            "link": {"web": "https://www.forif.org/"}
+            "description": "게시 날짜 : " + notice['created_at'][:10],
+            "link": {"web": "https://www.forif.org/announcement"}
         }
         items.append(item)
 
@@ -25,7 +25,7 @@ def study_list():
                 {
                     "listCard": {
                         "header": {
-                            "title": "🦊 최근 올라온 공지사항들"
+                            "title": "최근 올라온 공지사항들"
                         },
                         "items": items
                     }

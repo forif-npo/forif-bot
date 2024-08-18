@@ -13,7 +13,7 @@ def study_list():
     for study in studies:
         item = {
             "title": study['study_name'],
-            "description": study['explanation'],
+            "description": study['one_liner'],
             "link": {"web": study['web_url']}
         }
 
@@ -27,7 +27,7 @@ def study_list():
     for i in range(carousel_count):
         temp = {
             "header": {
-                "title": "현재 운영 중인 정규 스터디 🦊"
+                "title": "📚 현재 운영 중인 정규 스터디"
             },
             "items": items[i*5 : (i+1)*5]
         }
@@ -40,7 +40,7 @@ def study_list():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "터치 혹은 클릭시 어쩌구"
+                        "text": "터치 혹은 클릭시 상세 소개 페이지로 이동됩니다!"
                     }
                 },
                 {
